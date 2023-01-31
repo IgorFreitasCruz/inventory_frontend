@@ -40,7 +40,7 @@ const CheckUser: FC = () => {
                 type: ActionTypes.UPDATE_PASSWORD_USER_ID,
                 payload: response.data.user_id
             })
-            // history("/")
+            history("/create-password")
         }
         setLoading(false)
     }

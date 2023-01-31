@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import AuthRoute from './components/AuthRoute'
 import User from './pages/User'
 import React from 'react'
+import UpdateUserPassword from './pages/UpdateUserPassord'
 
 const Router: FC = () => {
     return <>
@@ -13,6 +14,7 @@ const Router: FC = () => {
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/check-user" element={<CheckUser />} />
+                <Route path="/create-password" element={<UpdateUserPassword />} />
                 <Route path='/' element={
                     <AuthRoute>
                         <Home />

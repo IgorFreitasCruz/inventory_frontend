@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios'
 
 export interface DataProps {
-    [key: string]: string | boolean | number
+    [key: string]: string | boolean | number | null
 }
 
 export interface CustomAxiosError extends Omit<AxiosError, 'response'> {

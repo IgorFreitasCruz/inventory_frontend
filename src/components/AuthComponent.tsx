@@ -11,6 +11,7 @@ interface AuthComponentProps {
     linkPath?: string
     onSubmit: (values: DataProps) => void
     loading?: boolean
+    isUpdatePassword?: boolean
 }
 
 const AuthComponent: FC<AuthComponentProps> = ({
@@ -21,6 +22,7 @@ const AuthComponent: FC<AuthComponentProps> = ({
     linkPath = "/check-user",
     onSubmit,
     loading = false,
+    isUpdatePassword = false,
 }) => {
     return (
         <div className='login'>
@@ -30,17 +32,24 @@ const AuthComponent: FC<AuthComponentProps> = ({
                     <h2>MyShop</h2>
                 </div>
                 <Form layout="vertical" autoComplete='off' onFinish={onSubmit}>
-                    <Form.Item
+                    {!isUpdatePassword && <Form.Item
                         label="Email"
                         name="email"
                         rules={[{ required: true, message: "Por favor, insira seu email." }]}
                     >
                         <Input placeholder="email@email.com" type='email' />
-                    </Form.Item>
+                    </Form.Item>}
                     {isPassword && <Form.Item
                         label="Senha"
                         name="password"
                         rules={[{ required: true, message: "Por favor, insira sua senha." }]}>
+                        <Input placeholder="********" type='password' />
+
+                    </Form.Item>}
+                    {isUpdatePassword && <Form.Item
+                        label="Confirmar senha"
+                        name="password_confirm"
+                        rules={[{ required: true, message: "Repita sua senha." }]}>
                         <Input placeholder="********" type='password' />
 
                     </Form.Item>}
