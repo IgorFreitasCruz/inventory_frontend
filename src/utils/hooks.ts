@@ -22,5 +22,6 @@ export const useAuth = async ({ errorCallback, successCallback }: AuthProps) => 
             }
         }
         checkUser()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 }

@@ -29,7 +29,6 @@ const AuthComponent: FC<AuthComponentProps> = ({
                     <h3>{titleText}</h3>
                     <h2>MyShop</h2>
                 </div>
-
                 <Form layout="vertical" autoComplete='off' onFinish={onSubmit}>
                     <Form.Item
                         label="Email"

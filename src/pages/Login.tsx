@@ -1,18 +1,16 @@
-import { FC, useState } from 'react'
+import React from 'react'
 import AuthComponent from '../components/AuthComponent'
-import { CustomAxiosError, DataProps } from '../utils/types'
-import axios from 'axios'
+import { FC, useState } from 'react'
+import { DataProps } from '../utils/types'
 import { LoginUrl } from '../utils/network'
-import { notification } from 'antd'
 import { tokenName } from '../utils/data'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../utils/hooks'
+import { axiosRequest } from '../utils/functions'
 
 
 interface LoginDataProps {
-    data: {
-        access: string
-    }
+    access: string
 }
 
 const Login: FC = () => {
@@ -28,14 +26,16 @@ const Login: FC = () => {
 
     const onSubmit = async (values: DataProps) => {
         setLoading(true)
-        const response: LoginDataProps = await axios.post(LoginUrl, { ...values }).catch(
-            (e: CustomAxiosError) => {
-                notification.error({
-                    message: "Ocorreu um erro!",
-                    description: e.response?.data.error
-                })
+
+        const response = await axiosRequest<LoginDataProps>({
+            method: 'post',
+            url: LoginUrl,
+            payload: values,
+            errorObject: {
+                message: "Erro ao acessar"
             }
-        ) as LoginDataProps
+        })
+
         if (response) {
             localStorage.setItem(tokenName, response.data.access);
             history("/")

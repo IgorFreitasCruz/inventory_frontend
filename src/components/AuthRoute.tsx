@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren, useState } from 'react'
 import { logOut } from '../utils/functions'
 import { useAuth } from '../utils/hooks'
+import Layout from './Layout'
 
 const AuthRoute: FC<PropsWithChildren> = ({ children }) => {
     const [loading, setLoading] = useState(true)
@@ -18,7 +19,9 @@ const AuthRoute: FC<PropsWithChildren> = ({ children }) => {
         return <i>loading...</i>
     }
 
-    return <>{children}</>
+    return <Layout>
+        {children}
+    </Layout>
 
 }
 

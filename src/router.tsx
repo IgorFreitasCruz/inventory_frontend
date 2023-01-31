@@ -4,6 +4,8 @@ import Login from './pages/Login'
 import CheckUser from './pages/CheckUser'
 import Home from './pages/Home'
 import AuthRoute from './components/AuthRoute'
+import User from './pages/User'
+import React from 'react'
 
 const Router: FC = () => {
     return <>
@@ -16,7 +18,11 @@ const Router: FC = () => {
                         <Home />
                     </AuthRoute>
                 } />
-                {/* <Route path='/' element={<Home />} /> */}
+                <Route path='/users' element={
+                    <AuthRoute>
+                        <User />
+                    </AuthRoute>
+                } />
             </Routes>
         </BrowserRouter>
     </>
